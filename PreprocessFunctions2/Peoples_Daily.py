@@ -4,7 +4,11 @@ import os
 from utils import *
 import random
 
-dataset_name = 'MSRA'
+dataset_name = 'Peoples_Daily'
+
+PROCESS_FILES = [
+    'train.json', 'test.json', 'dev.json'
+]
 
 tag2name = {
     'LOC': '地点',
@@ -14,9 +18,6 @@ tag2name = {
 
 tags = ['LOC', 'PER', 'ORG']
 
-PROCESS_FILES = [
-    'train.json', 'test.json', 'dev.json'
-]
 
 def process1(sample: dict) -> list:
     """

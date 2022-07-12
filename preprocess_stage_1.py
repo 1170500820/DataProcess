@@ -17,7 +17,13 @@ from PreprocessFunctions import \
     ASAP, \
     CHID, \
     CMNLI, \
-    MSRA
+    MSRA, \
+    WeiboNER, \
+    Peoples_Daily, \
+    DuEE_fin, \
+    OPPO, \
+    CLUENER, \
+    NEC
 
 
 """
@@ -33,9 +39,16 @@ dataset2function = {
     'ASAP': ASAP.process_,
     'CHID': CHID.process_,
     'CMNLI': CMNLI.process_,
-    'MSRA': MSRA.process_
+    'MSRA': MSRA.process_,
+    'WeiboNER': WeiboNER.process_,
+    'Peoples_Daily': Peoples_Daily.process_,
+    'DuEE_fin': DuEE_fin.process_,
+    'OPPO': OPPO.process_,
+    'CLUENER': CLUENER.process_,
+    'NEC': NEC.process_
 }
-unavailable_dataset = {'ChFinAnn', 'DuEE', 'DuIE', 'AdvertiseGen', 'LCQMC', 'ASAP', 'CHID', 'CMNLI'}
+unavailable_dataset = {'ChFinAnn', 'DuEE', 'DuReader_robust', 'DuIE', 'AdvertiseGen', 'LCQMC', 'ASAP', 'CHID', 'CMNLI',
+                       'MSRA', 'DuEE_fin', 'OPPO', }
 # unavailable_dataset = {}
 
 

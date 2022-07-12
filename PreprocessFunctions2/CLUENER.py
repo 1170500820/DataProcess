@@ -4,19 +4,24 @@ import os
 from utils import *
 import random
 
-dataset_name = 'MSRA'
-
-tag2name = {
-    'LOC': '地点',
-    'PER': '人物',
-    'ORG': '组织机构'
-}
-
-tags = ['LOC', 'PER', 'ORG']
+dataset_name = 'CLUENER.py'
 
 PROCESS_FILES = [
     'train.json', 'test.json', 'dev.json'
 ]
+
+tag2name = {
+    'address': '地址',
+    'book': '书名',
+    'company': '公司',
+    'game': '游戏',
+    'government': '政府',
+    'movie': '电影',
+    'name': '姓名',
+    'organization': '组织机构',
+    'position': '职位',
+    'scene': '景点'}
+
 
 def process1(sample: dict) -> list:
     """
@@ -45,14 +50,14 @@ def process1(sample: dict) -> list:
 
 def process2(sample: dict) -> list:
     """
-    只询问一种实体
+    只询问LOC
     :param sample:
     :return:
     """
     results = []
     text = sample['text']
     ners = sample['ners']
-    for elem_label in tags:
+    for elem_label in ['address', 'book', 'company', 'game', 'government', 'movie', 'name', 'organization', 'position', 'scene']:
         if elem_label not in ners:
             return []
         results.append({
