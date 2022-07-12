@@ -1,5 +1,6 @@
 from settings import *
 import os
+import importlib
 import json
 from rich.console import Console
 from rich.table import Column, Table
@@ -136,6 +137,35 @@ def draw_count(count: dict):
         f'{sum(x["total"] for x in count.values())}'
     )
     consle.print(table)
+
+
+"""
+自动import工具
+"""
+
+
+def get_modules(package="."):
+    """
+    获取包名下所有非__init__的模块名
+    https://blog.51cto.com/u_13567403/3041542
+    """
+    modules = []
+    files = os.listdir(package)
+
+    for file in files:
+        if not file.startswith("__"):
+            name, ext = os.path.splitext(file)
+            modules.append("." + name)
+
+    return modules
+
+
+def get_process_(pkg_name: str):
+    submodules = get_modules(pkg_name)
+    process_dict = {}
+    for elem in submodules:
+        process_dict[elem.split('.')[1]] = importlib.import_module(elem, pkg_name).process_
+    return process_dict
 
 
 if __name__ == '__main__':

@@ -5,20 +5,12 @@
 import os
 from loguru import logger
 from settings import *
-from PreprocessFunctions2 import \
-    MSRA, \
-    WeiboNER, \
-    Peoples_Daily, \
-    CLUENER
+from utils import get_process_
+
 
 use_test = False
 
-dataset2function = {
-    'MSRA': MSRA.process_,
-    'WeiboNER': WeiboNER.process_,
-    'Peoples_Daily': Peoples_Daily.process_,
-    'CLUENER': CLUENER.process_
-}
+dataset2function = get_process_('PreprocessFunctions2')
 unavailable_dataset = {
 
 }

@@ -7,49 +7,34 @@ import os
 
 from loguru import logger
 from settings import *
-from PreprocessFunctions import \
-    ChFinAnn, \
-    DuEE, \
-    DuReader_robust, \
-    DuIE, \
-    AdvertiseGen, \
-    LCQMC, \
-    ASAP, \
-    CHID, \
-    CMNLI, \
-    MSRA, \
-    WeiboNER, \
-    Peoples_Daily, \
-    DuEE_fin, \
-    OPPO, \
-    CLUENER, \
-    NEC
+from utils import get_process_
 
 
 """
 默认情况下，所有数据集的预处理函数的接口只接收两个参数：原数据集的路径和输出新数据集的根目录
 """
-dataset2function = {
-    'ChFinAnn': ChFinAnn.process_ChFinAnn,
-    'DuEE': DuEE.process_DuEE,
-    'DuReader_robust': DuReader_robust.process_,
-    'DuIE': DuIE.process_,
-    'AdvertiseGen': AdvertiseGen.process_,
-    'LCQMC': LCQMC.process_,
-    'ASAP': ASAP.process_,
-    'CHID': CHID.process_,
-    'CMNLI': CMNLI.process_,
-    'MSRA': MSRA.process_,
-    'WeiboNER': WeiboNER.process_,
-    'Peoples_Daily': Peoples_Daily.process_,
-    'DuEE_fin': DuEE_fin.process_,
-    'OPPO': OPPO.process_,
-    'CLUENER': CLUENER.process_,
-    'NEC': NEC.process_
-}
-unavailable_dataset = {'ChFinAnn', 'DuEE', 'DuReader_robust', 'DuIE', 'AdvertiseGen', 'LCQMC', 'ASAP', 'CHID', 'CMNLI',
-                       'MSRA', 'DuEE_fin', 'OPPO', }
-# unavailable_dataset = {}
+# dataset2function = {
+#     'ChFinAnn': ChFinAnn.process_ChFinAnn,
+#     'DuEE': DuEE.process_DuEE,
+#     'DuReader_robust': DuReader_robust.process_,
+#     'DuIE': DuIE.process_,
+#     'AdvertiseGen': AdvertiseGen.process_,
+#     'LCQMC': LCQMC.process_,
+#     'ASAP': ASAP.process_,
+#     'CHID': CHID.process_,
+#     'CMNLI': CMNLI.process_,
+#     'MSRA': MSRA.process_,
+#     'WeiboNER': WeiboNER.process_,
+#     'Peoples_Daily': Peoples_Daily.process_,
+#     'DuEE_fin': DuEE_fin.process_,
+#     'OPPO': OPPO.process_,
+#     'CLUENER': CLUENER.process_,
+#     'NEC': NEC.process_
+# }
+dataset2function = get_process_('PreprocessFunctions')
+# unavailable_dataset = {'ChFinAnn', 'DuEE', 'DuReader_robust', 'DuIE', 'AdvertiseGen', 'LCQMC', 'ASAP', 'CHID', 'CMNLI',
+#                        'MSRA', 'DuEE_fin', 'OPPO', }
+unavailable_dataset = {}
 
 
 def preprocess():

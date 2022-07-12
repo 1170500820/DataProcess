@@ -18,6 +18,7 @@ PROCESS_FILES = [
     'train.json', 'test.json', 'dev.json'
 ]
 
+
 def process1(sample: dict) -> list:
     """
     已知一个实体，然后去抽取剩下的
